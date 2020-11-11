@@ -1,13 +1,12 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans&family=Montserrat&family=Open+Sans&family=Poppins&family=Roboto&display=swap");
+/* font-family: 'Kumbh Sans', sans-serif;
+font-family: 'Open Sans', sans-serif;
+font-family: "Poppins", sans-serif;
+font-family: 'Roboto', sans-serif; */
+* {
+  font-family: "Montserrat", sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+main {
+  min-height: 80vh;
 }
