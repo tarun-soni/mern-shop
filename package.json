@@ -1,0 +1,23 @@
+{
+  "name": "mern-shop",
+  "version": "1.0.0",
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "server.js",
+  "scripts": {
+    "start":"nodemon backend/server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tarun-soni/mern-shop.git"
+  },
+  "keywords": [],
+  "author": "Tarun",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tarun-soni/mern-shop/issues"
+  },
+  "homepage": "https://github.com/tarun-soni/mern-shop#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
