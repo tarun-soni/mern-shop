@@ -1,8 +1,9 @@
-const express = require("express");
-const products = require("./data/products");
-var cors = require("cors");
-
+import express from "express";
+import products from "./data/products.js";
+import cors from "cors";
+import dotenv from "dotenv";
 const app = express();
+dotenv.config();
 
 app.use(cors());
 app.get("/", (req, res) => {
@@ -17,5 +18,8 @@ app.get("/api/products/:id", (req, res) => {
   const product = products.find((p) => p._id === req.params.id);
   return res.json(product);
 });
-
-app.listen(5000, console.log("server running on port 5000"));
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, console.log(`server running on port ${PORT}`));
+function newFunction() {
+  return require("dotenv");
+}
