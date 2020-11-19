@@ -13,7 +13,7 @@ import {
 import { Link } from "react-router-dom";
 import { Message } from "../components";
 
-import { addToCart } from "../actions/cartAction";
+import { addToCart, removeFromCart } from "../actions/cartAction";
 const CartScreen = ({ match, location, history }) => {
   const productId = match.params.id;
   const qty = location.search ? location.search.split("=")[1] : 1;
@@ -31,8 +31,14 @@ const CartScreen = ({ match, location, history }) => {
   }, [dispatch, productId, qty]);
 
   const removeFromCartHandler = (id) => {
-    console.log(id);
+    dispatch(removeFromCart(id));
   };
+  const checkoutHandler = (id) => {
+    console.log("checkout");
+
+    history.push("/login?redirect=shipping");
+  };
+
   return (
     <>
       <h3>Shopping Cart</h3>
@@ -99,8 +105,33 @@ const CartScreen = ({ match, location, history }) => {
             </ListGroup>
           )}
         </Col>
-        <Col md={2}></Col>
-        <Col md={2}></Col>
+        <Col md={4}>
+          <Card>
+            <ListGroup variant="flush">
+              <ListGroup.Item>
+                <h3>
+                  Subtotal (
+                  {cartItems.reduce((acc, item) => acc + Number(item.qty), 0)})
+                  items
+                </h3>
+                $
+                {cartItems
+                  .reduce((acc, item) => acc + item.qty * item.price, 0)
+                  .toFixed(2)}
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <Button
+                  type="button"
+                  className="btn-block"
+                  disabled={cartItems.length === 0}
+                  onClick={checkoutHandler}
+                >
+                  Proceed To Checkout
+                </Button>
+              </ListGroup.Item>
+            </ListGroup>
+          </Card>{" "}
+        </Col>
       </Row>
     </>
   );
