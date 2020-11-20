@@ -29,6 +29,19 @@ const authUser = asyncHandler(async (req, res) => {
 //access  PRIVATE
 
 const getUserProfile = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.user._id);
+
+  if (user) {
+    return res.json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      isAdmin: user.isAdmin,
+    });
+  } else {
+    res.status(404);
+    throw new Error("User not Found");
+  }
   res.send("success");
 });
 export { authUser, getUserProfile };
