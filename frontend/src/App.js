@@ -6,6 +6,7 @@ import {
   HomeScreen,
   LoginScreen,
   ProductScreen,
+  ProfileScreen,
   RegisterScreen,
 } from "./screens";
 import { BrowserRouter as Router, Route } from "react-router-dom";
@@ -20,6 +21,7 @@ const App = () => {
           <Route path="/cart/:id?" component={CartScreen} />
           <Route path="/login" component={LoginScreen} />
           <Route path="/register" component={RegisterScreen} />
+          <Route exact path="/profile" component={ProfileScreen} />
         </Container>
       </main>
 
