@@ -5,6 +5,7 @@ import {
   CartScreen,
   HomeScreen,
   LoginScreen,
+  PaymentScreen,
   ProductScreen,
   ProfileScreen,
   RegisterScreen,
@@ -24,6 +25,7 @@ const App = () => {
           <Route path="/register" component={RegisterScreen} />
           <Route exact path="/profile" component={ProfileScreen} />
           <Route exact path="/shipping" component={ShippingScreen} />
+          <Route exact path="/payment" component={PaymentScreen} />
         </Container>
       </main>
 
