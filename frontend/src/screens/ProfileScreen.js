@@ -4,7 +4,6 @@ import { Loader, Message } from "../components";
 
 import { useDispatch, useSelector } from "react-redux";
 import { getUserDetails, updateUserProfile } from "../actions/userActions";
-import { Link } from "react-router-dom";
 
 const ProfileScreen = ({ location, history }) => {
   const [name, setName] = useState("");
