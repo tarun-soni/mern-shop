@@ -79,11 +79,6 @@ const LoginScreen = ({ location, history }) => {
             >
               Register
             </Link>
-            <Link
-              to={redirect ? `/register?redirect=${redirect}` : "/register"}
-            >
-              Register
-            </Link>
           </Col>
         </Row>
       </FormContainer>
