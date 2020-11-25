@@ -6,6 +6,7 @@ import {
   HomeScreen,
   LoginScreen,
   PaymentScreen,
+  PlaceOrderScreen,
   ProductScreen,
   ProfileScreen,
   RegisterScreen,
@@ -26,6 +27,7 @@ const App = () => {
           <Route exact path="/profile" component={ProfileScreen} />
           <Route exact path="/shipping" component={ShippingScreen} />
           <Route exact path="/payment" component={PaymentScreen} />
+          <Route exact path="/placeorder" component={PlaceOrderScreen} />
         </Container>
       </main>
 
