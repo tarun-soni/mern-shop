@@ -35,7 +35,7 @@ const PlaceOrderScreen = ({ history }) => {
     if (success) {
       history.push(`/order/${order._id}`);
     }
-  }, [history]);
+  }, [history, success, order]);
 
   const placeOrderHandler = () => {
     console.log("place order button");
