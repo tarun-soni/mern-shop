@@ -7,3 +7,4 @@ export { default as ProfileScreen } from "./ProfileScreen";
 export { default as ShippingScreen } from "./ShippingScreen";
 export { default as PaymentScreen } from "./PaymentScreen";
 export { default as PlaceOrderScreen } from "./PlaceOrderScreen";
+export { default as OrderScreen } from "./OrderScreen";

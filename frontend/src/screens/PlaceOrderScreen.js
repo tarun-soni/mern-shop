@@ -97,7 +97,7 @@ const PlaceOrderScreen = ({ history }) => {
                             />
                           </Col>
                           <Col>
-                            <ListGroup.Item style={{ alignSelf: "center" }}>
+                            <ListGroup.Item>
                               <Link to={`/product/${item.product}`}>
                                 {item.name}
                               </Link>
