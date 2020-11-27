@@ -1,5 +1,4 @@
 import asyncHandler from "express-async-handler";
-import { set } from "mongoose";
 import Order from "../models/orderModel.js";
 
 // @desc    Create new order
@@ -56,6 +55,7 @@ const getOrderById = asyncHandler(async (req, res) => {
     throw new Error("Order not found");
   }
 });
+
 // @desc    update order to paid
 // @route   PUT /api/orders/:id/pay
 // @access  Private
@@ -76,7 +76,7 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
     };
 
     const updateOrder = await order.save();
-    res.json(404);
+    res.json(updateOrder);
   } else {
     res.status(404);
     throw new Error("Error in update order to paid");
