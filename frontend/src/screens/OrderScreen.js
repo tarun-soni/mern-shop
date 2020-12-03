@@ -43,7 +43,6 @@ const OrderScreen = ({ match, history }) => {
 
     const addPayPalScript = async () => {
       const { data: clientId } = await axios.get("/api/config/paypal");
-      console.log("clientId :>> ", clientId);
 
       const script = document.createElement("script");
       script.type = "text/javascript";
@@ -65,12 +64,11 @@ const OrderScreen = ({ match, history }) => {
         setSdkReady(true);
       }
     }
-  }, [dispatch, orderId, successPay, order]);
+  }, [dispatch, orderId, successPay, order, history, userInfo]);
 
   const successPaymentHandler = (paymentResult) => {
-    console.log("paymentResult :>> ", paymentResult);
-
-    dispatch(payOrder(match.params.id, paymentResult));
+    console.log(paymentResult);
+    dispatch(payOrder(orderId, paymentResult));
   };
 
   return loading ? (
