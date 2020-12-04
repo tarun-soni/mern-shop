@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Col, ListGroup, Image, Card, Button, Row } from "react-bootstrap";
+import { Col, ListGroup, Image, Card, Row } from "react-bootstrap";
 import { Message, Loader } from "../components";
 
 import { useDispatch, useSelector } from "react-redux";

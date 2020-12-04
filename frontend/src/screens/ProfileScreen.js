@@ -137,12 +137,12 @@ const ProfileScreen = ({ location, history }) => {
             <Table striped bordered hover responsive className="table-sm">
               <thead className="text-center">
                 <tr>
-                  <td>ID</td>
-                  <td>Date</td>
-                  <td>Total</td>
-                  <td>Paid</td>
-                  <td>Delivered</td>
-                  <td></td>
+                  <th>ID</th>
+                  <th>Date</th>
+                  <th>Total</th>
+                  <th>Paid</th>
+                  <th>Delivered</th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
