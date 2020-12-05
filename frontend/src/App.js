@@ -12,6 +12,7 @@ import {
   ProfileScreen,
   RegisterScreen,
   ShippingScreen,
+  UserEditScreen,
   UserListScreen,
 } from "./screens";
 import { BrowserRouter as Router, Route } from "react-router-dom";
@@ -31,6 +32,7 @@ const App = () => {
           <Route path="/product/:id" component={ProductScreen} />
           <Route path="/cart/:id?" component={CartScreen} />
           <Route exact path="/admin/userlist" component={UserListScreen} />
+          <Route path="/admin/user/:id/edit" component={UserEditScreen} />
           <Route exact path="/" component={HomeScreen} />
         </Container>
       </main>
