@@ -9,6 +9,9 @@ import {
   PRODUCT_DELETE_SUCCESS,
   PRODUCT_DELETE_REQUEST,
   PRODUCT_DELETE_FAIL,
+  PRODUCT_CREATE_REQUEST,
+  PRODUCT_CREATE_SUCCESS,
+  PRODUCT_CREATE_FAIL,
 } from "../constants/productConstants";
 import { logout } from "./userActions";
 
@@ -51,6 +54,7 @@ export const listProductDetails = (id) => async (dispatch) => {
     });
   }
 };
+
 export const deleteProduct = (id) => async (dispatch, getState) => {
   try {
     dispatch({
@@ -82,6 +86,42 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
     }
     dispatch({
       type: PRODUCT_DELETE_FAIL,
+      payload: message,
+    });
+  }
+};
+
+export const createProduct = () => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: PRODUCT_CREATE_REQUEST,
+    });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    //here passing empty bj {} cos that req is a post req but dosent require any data
+    const { data } = await axios.post(`/api/products/`, {}, config);
+
+    dispatch({
+      type: PRODUCT_CREATE_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+
+    dispatch({
+      type: PRODUCT_CREATE_FAIL,
       payload: message,
     });
   }
