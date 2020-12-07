@@ -44,11 +44,11 @@ const UserListScreen = ({ history }) => {
         <Table striped bordered hover responsive className="table-sm">
           <thead className="text-center">
             <tr>
-              <td>ID</td>
-              <td>Name</td>
-              <td>Email</td>
-              <td>isAdmin</td>
-              <td></td>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>isAdmin</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
