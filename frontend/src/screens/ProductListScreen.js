@@ -3,14 +3,22 @@ import { Button, Table, Row, Col } from "react-bootstrap";
 import { Loader, Message } from "../components";
 
 import { useDispatch, useSelector } from "react-redux";
-import { listProducts } from "../actions/productAction";
+import { deleteProduct, listProducts } from "../actions/productAction";
 import { LinkContainer } from "react-router-bootstrap";
 
 const ProductListScreen = ({ match, history }) => {
   const dispatch = useDispatch();
   const [readMore, setReadMore] = useState(true);
+
   const productList = useSelector((state) => state.productList);
   const { loading, error, products } = productList;
+
+  const productDelete = useSelector((state) => state.productDelete);
+  const {
+    loading: loadingDelete,
+    error: errorDelete,
+    success: successDelete,
+  } = productDelete;
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
@@ -21,14 +29,15 @@ const ProductListScreen = ({ match, history }) => {
     } else {
       history.push("/login");
     }
-  }, [userInfo, dispatch, history]);
+  }, [userInfo, dispatch, history, successDelete]);
 
   const deleteHandler = (id) => {
     if (window.confirm("Are you sure?")) {
-      //dipatch the delete product
+      console.log("clicked yes");
+      dispatch(deleteProduct(id));
     }
   };
-  const createProductHandler = (product) => {
+  const createProductHandler = () => {
     if (window.confirm("Are you sure?")) {
       //dipatch the create product
     }
@@ -48,6 +57,10 @@ const ProductListScreen = ({ match, history }) => {
           </Col>
         </Col>
       </Row>
+
+      {loadingDelete && <Loader />}
+      {errorDelete && <Message variant="danget">{error}</Message>}
+
       {loading ? (
         <Loader />
       ) : error ? (
