@@ -7,7 +7,7 @@ import {
   deleteProduct,
   listProducts,
   createProduct,
-} from "../actions/productAction";
+} from "../actions/productActions";
 import { LinkContainer } from "react-router-bootstrap";
 import { PRODUCT_CREATE_RESET } from "../constants/productConstants";
 const ProductListScreen = ({ match, history }) => {

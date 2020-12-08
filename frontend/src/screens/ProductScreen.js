@@ -13,7 +13,7 @@ import {
 } from "react-bootstrap";
 
 import { useDispatch, useSelector } from "react-redux";
-import { listProductDetails } from "../actions/productAction";
+import { listProductDetails } from "../actions/productActions";
 
 const ProductScreen = ({ history, match }) => {
   const [qty, setQty] = useState(1);
