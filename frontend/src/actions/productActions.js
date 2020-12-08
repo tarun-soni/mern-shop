@@ -12,6 +12,9 @@ import {
   PRODUCT_CREATE_REQUEST,
   PRODUCT_CREATE_SUCCESS,
   PRODUCT_CREATE_FAIL,
+  PRODUCT_UPDATE_REQUEST,
+  PRODUCT_UPDATE_SUCCESS,
+  PRODUCT_UPDATE_FAIL,
 } from "../constants/productConstants";
 import { logout } from "./userActions";
 
@@ -122,6 +125,49 @@ export const createProduct = () => async (dispatch, getState) => {
 
     dispatch({
       type: PRODUCT_CREATE_FAIL,
+      payload: message,
+    });
+  }
+};
+
+export const updateProduct = (product) => async (dispatch, getState) => {
+  try {
+    console.log("product :>> ", product);
+    dispatch({
+      type: PRODUCT_UPDATE_REQUEST,
+    });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    //here passing empty bj {} cos that req is a post req but dosent require any data
+    const { data } = await axios.put(
+      `/api/products/${product._id}`,
+      product,
+      config
+    );
+
+    dispatch({
+      type: PRODUCT_UPDATE_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+
+    dispatch({
+      type: PRODUCT_UPDATE_FAIL,
       payload: message,
     });
   }

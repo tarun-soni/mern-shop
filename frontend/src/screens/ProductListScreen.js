@@ -29,7 +29,7 @@ const ProductListScreen = ({ match, history }) => {
     loading: loadingCreate,
     error: errorCreate,
     success: successCreate,
-    prodcut: createdProduct,
+    product: createdProduct,
   } = productCreate;
 
   const userLogin = useSelector((state) => state.userLogin);
@@ -38,15 +38,14 @@ const ProductListScreen = ({ match, history }) => {
   useEffect(() => {
     dispatch({ type: PRODUCT_CREATE_RESET });
 
-    if (!userInfo.isAdmin) {
+    if (!userInfo || !userInfo.isAdmin) {
       history.push("/login");
     }
 
     if (successCreate) {
-      history.push(`/admin/product/${createProduct._id}`);
-
-      dispatch(listProducts());
+      history.push(`/admin/product/${createdProduct._id}/edit`);
     }
+    dispatch(listProducts());
   }, [
     userInfo,
     dispatch,
@@ -103,8 +102,6 @@ const ProductListScreen = ({ match, history }) => {
             {products.map((product) => (
               <tr key={product._id} className="text-center">
                 <td onClick={() => setReadMore(!readMore)}>
-                  {/* <td> */}
-
                   {readMore ? product._id.substring(0, 7) : product._id}
                   {readMore && " . . . "}
                 </td>
