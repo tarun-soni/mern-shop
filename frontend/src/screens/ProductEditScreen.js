@@ -7,7 +7,7 @@ import Loader from "../components/Loader";
 import FormContainer from "../components/FormContainer";
 import { listProductDetails, updateProduct } from "../actions/productActions";
 import { PRODUCT_UPDATE_RESET } from "../constants/productConstants";
-
+import axios from "axios";
 const ProductEditScreen = ({ match, history }) => {
   const productId = match.params.id;
   const [name, setName] = useState("");
@@ -67,6 +67,28 @@ const ProductEditScreen = ({ match, history }) => {
     );
   };
 
+  const uploadFileHandler = async (e) => {
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append("image", file);
+    setUploading(true);
+
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "multipart/file",
+        },
+      };
+
+      const { data } = await axios.post("/api/upload", formData, config);
+      setImage(data);
+      setUploading(false);
+    } catch (err) {
+      console.error("error in upload file", err);
+      setUploading(false);
+    }
+  };
+
   return (
     <>
       <Link to="/admin/productlist" className="btn btn-light my-3">
@@ -117,6 +139,14 @@ const ProductEditScreen = ({ match, history }) => {
               ></Form.Control>
             </Form.Group>
 
+            <Form.File
+              controlId="image-file"
+              label="Choose File"
+              custom
+              onChange={uploadFileHandler}
+            ></Form.File>
+
+            {uploading && <Loader />}
             <Form.Group controlId="brand">
               <Form.Label>Brand</Form.Label>
               <Form.Control

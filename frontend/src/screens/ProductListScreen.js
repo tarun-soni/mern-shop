@@ -10,6 +10,7 @@ import {
 } from "../actions/productActions";
 import { LinkContainer } from "react-router-bootstrap";
 import { PRODUCT_CREATE_RESET } from "../constants/productConstants";
+import { Link } from "react-router-dom";
 const ProductListScreen = ({ match, history }) => {
   const dispatch = useDispatch();
   const [readMore, setReadMore] = useState(true);
@@ -66,6 +67,10 @@ const ProductListScreen = ({ match, history }) => {
 
   return (
     <>
+      <Link to="/" className="btn btn-light my-3 ">
+        <i className="fas fa-arrow-left mr-2" aria-hidden="true"></i>
+        Back
+      </Link>
       <Row className="align-items-center">
         <Col>
           <h3>Products</h3>
