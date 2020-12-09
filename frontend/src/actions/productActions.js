@@ -110,8 +110,7 @@ export const createProduct = () => async (dispatch, getState) => {
       },
     };
 
-    //here passing empty bj {} cos that req is a post req but dosent require any data
-    const { data } = await axios.post(`/api/products/`, {}, config);
+    const { data } = await axios.post(`/api/products`, {}, config);
 
     dispatch({
       type: PRODUCT_CREATE_SUCCESS,
@@ -122,7 +121,9 @@ export const createProduct = () => async (dispatch, getState) => {
       error.response && error.response.data.message
         ? error.response.data.message
         : error.message;
-
+    if (message === "Not authorized, token failed") {
+      dispatch(logout());
+    }
     dispatch({
       type: PRODUCT_CREATE_FAIL,
       payload: message,
@@ -132,7 +133,6 @@ export const createProduct = () => async (dispatch, getState) => {
 
 export const updateProduct = (product) => async (dispatch, getState) => {
   try {
-    console.log("product :>> ", product);
     dispatch({
       type: PRODUCT_UPDATE_REQUEST,
     });
@@ -144,12 +144,10 @@ export const updateProduct = (product) => async (dispatch, getState) => {
     const config = {
       headers: {
         "Content-Type": "application/json",
-
         Authorization: `Bearer ${userInfo.token}`,
       },
     };
 
-    //here passing empty bj {} cos that req is a post req but dosent require any data
     const { data } = await axios.put(
       `/api/products/${product._id}`,
       product,
@@ -160,12 +158,15 @@ export const updateProduct = (product) => async (dispatch, getState) => {
       type: PRODUCT_UPDATE_SUCCESS,
       payload: data,
     });
+    dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: data });
   } catch (error) {
     const message =
       error.response && error.response.data.message
         ? error.response.data.message
         : error.message;
-
+    if (message === "Not authorized, token failed") {
+      dispatch(logout());
+    }
     dispatch({
       type: PRODUCT_UPDATE_FAIL,
       payload: message,
