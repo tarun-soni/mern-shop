@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUserDetails, updateUserProfile } from "../actions/userActions";
 import { listMyOrders } from "../actions/orderActions";
 import { LinkContainer } from "react-router-bootstrap";
+import { Link } from "react-router-dom";
 
 const ProfileScreen = ({ location, history }) => {
   const [name, setName] = useState("");
@@ -53,6 +54,10 @@ const ProfileScreen = ({ location, history }) => {
 
   return (
     <>
+      <Link to="/" className="btn btn-light my-3 ">
+        <i className="fas fa-arrow-left mr-2" aria-hidden="true"></i>
+        Back
+      </Link>
       <Row>
         <Col md={3}>
           <h3>User Profile</h3>

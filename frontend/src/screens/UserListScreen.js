@@ -77,7 +77,7 @@ const UserListScreen = ({ history }) => {
                     ></i>
                   )}
                 </td>
-                <td>
+                <td className="d-flex justify-content-sm-around">
                   <LinkContainer to={`/admin/user/${user._id}/edit`}>
                     <Button className="btn-sm" variant="light">
                       <i className="fas fa-edit"></i>{" "}
