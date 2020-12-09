@@ -18,6 +18,7 @@ import {
   UserListScreen,
 } from "./screens";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import OrderListScreen from "./screens/OrderListScreen";
 const App = () => {
   return (
     <Router>
@@ -40,6 +41,7 @@ const App = () => {
             path="/admin/product/:id/edit"
             component={ProductEditScreen}
           />
+          <Route path="/admin/orderlist" component={OrderListScreen} />
           <Route
             path="/admin/productlist"
             component={ProductListScreen}
