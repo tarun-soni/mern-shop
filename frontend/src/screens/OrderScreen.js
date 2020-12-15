@@ -91,7 +91,14 @@ const OrderScreen = ({ match, history }) => {
     <Message variant="danger">{error}</Message>
   ) : (
     <>
+      {userInfo.isAdmin && (
+        <Link to="/admin/orderlist" className="btn btn-light my-3 ">
+          <i className="fas fa-arrow-left mr-2" aria-hidden="true"></i>
+          Back
+        </Link>
+      )}
       <h3>Order {order._id}</h3>
+
       <Row>
         <Col md={8}>
           <ListGroup variant="flush">
