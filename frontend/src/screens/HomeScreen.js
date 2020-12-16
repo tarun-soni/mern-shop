@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Row, Col } from "react-bootstrap";
-import { Loader, Message, Product } from "../components";
+import { Loader, Message, Product, SearchBox } from "../components";
 
 import { useDispatch, useSelector } from "react-redux";
 import { listProducts } from "../actions/productActions";
@@ -17,7 +17,15 @@ const HomeScreen = () => {
 
   return (
     <>
-      <h3>Latest Products</h3>
+      <Row>
+        <Col md={8}>
+          <h3>Latest Products</h3>
+        </Col>
+        <Col className="my-3" md={4}>
+          <SearchBox />
+        </Col>
+      </Row>
+
       {loading ? (
         <Loader />
       ) : error ? (
