@@ -1,19 +1,20 @@
 import React, { useEffect } from "react";
 import { Row, Col } from "react-bootstrap";
 import { Loader, Message, Product, SearchBox } from "../components";
-
+import { Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { listProducts } from "../actions/productActions";
 
-const HomeScreen = () => {
+const HomeScreen = ({ match }) => {
   const dispatch = useDispatch();
-  const productList = useSelector((state) => state.productList);
 
+  const keyword = match.params.keyword;
+  const productList = useSelector((state) => state.productList);
   const { loading, error, products } = productList;
 
   useEffect(() => {
-    dispatch(listProducts());
-  }, [dispatch]);
+    dispatch(listProducts(keyword));
+  }, [dispatch, keyword]);
 
   return (
     <>
@@ -22,7 +23,8 @@ const HomeScreen = () => {
           <h3>Latest Products</h3>
         </Col>
         <Col className="my-3" md={4}>
-          <SearchBox />
+          {/* normally calling <SearchBox/> will not have access to history hence...  */}
+          <Route render={({ history }) => <SearchBox history={history} />} />
         </Col>
       </Row>
 
