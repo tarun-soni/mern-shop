@@ -2,8 +2,13 @@ import path from "path";
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
+import morgan from "morgan";
 import connectDB from "./config/db.js";
 const app = express();
+
+if (process.env.NODE_ENV === "development") {
+  app.use(morgan("dev"));
+}
 
 app.use(express.json());
 
@@ -18,6 +23,7 @@ dotenv.config();
 connectDB();
 
 app.use(cors());
+
 app.get("/", (req, res) => {
   res.send("app running");
 });
