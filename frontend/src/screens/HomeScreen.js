@@ -3,12 +3,13 @@ import { Row, Col } from "react-bootstrap";
 import {
   Loader,
   Message,
+  Meta,
   Paginate,
   Product,
   ProductCarousel,
   SearchBox,
 } from "../components";
-import { Route } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { listProducts } from "../actions/productActions";
 
@@ -27,7 +28,15 @@ const HomeScreen = ({ match }) => {
 
   return (
     <>
-      {!keyword && <ProductCarousel />}
+      <Meta />
+      {!keyword ? (
+        <ProductCarousel />
+      ) : (
+        <Link to="/" className="btn btn-light my-3 ">
+          <i className="fas fa-arrow-left mr-2" aria-hidden="true"></i>
+          Back
+        </Link>
+      )}
       <Row>
         <Col md={8}>
           <h3>Latest Products</h3>
