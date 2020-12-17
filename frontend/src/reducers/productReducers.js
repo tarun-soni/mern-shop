@@ -32,7 +32,11 @@ export const productListReducer = (state = { products: [] }, action) => {
     case PRODUCT_LIST_SUCCESS:
       return {
         loading: false,
-        products: action.payload,
+        // initially payload had products , not it has obj of products,page, pages (see productController.js)
+        // products: action.payload,
+        products: action.payload.products,
+        pages: action.payload.pages,
+        page: action.payload.page,
       };
     case PRODUCT_LIST_FAIL:
       return {
