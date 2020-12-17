@@ -7,3 +7,4 @@ export { default as Loader } from "./Loader";
 export { default as FormContainer } from "./FormContainer";
 export { default as CheckoutSteps } from "./CheckoutSteps";
 export { default as SearchBox } from "./SearchBox";
+export { default as Paginate } from "./Paginate";
