@@ -8,3 +8,4 @@ export { default as FormContainer } from "./FormContainer";
 export { default as CheckoutSteps } from "./CheckoutSteps";
 export { default as SearchBox } from "./SearchBox";
 export { default as Paginate } from "./Paginate";
+export { default as ProductCarousel } from "./ProductCarousel";

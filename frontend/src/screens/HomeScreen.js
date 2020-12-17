@@ -1,6 +1,13 @@
 import React, { useEffect } from "react";
 import { Row, Col } from "react-bootstrap";
-import { Loader, Message, Paginate, Product, SearchBox } from "../components";
+import {
+  Loader,
+  Message,
+  Paginate,
+  Product,
+  ProductCarousel,
+  SearchBox,
+} from "../components";
 import { Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { listProducts } from "../actions/productActions";
@@ -20,6 +27,7 @@ const HomeScreen = ({ match }) => {
 
   return (
     <>
+      {!keyword && <ProductCarousel />}
       <Row>
         <Col md={8}>
           <h3>Latest Products</h3>
@@ -44,11 +52,13 @@ const HomeScreen = ({ match }) => {
             ))}
           </Row>
           <Row>
-            <Paginate
-              pages={pages}
-              page={page}
-              keyword={keyword ? keyword : ""}
-            />
+            <Col className="align-self-center">
+              <Paginate
+                pages={pages}
+                page={page}
+                keyword={keyword ? keyword : ""}
+              />
+            </Col>
           </Row>
         </>
       )}
