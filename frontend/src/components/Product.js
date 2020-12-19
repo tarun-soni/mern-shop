@@ -6,7 +6,7 @@ import { Rating } from "./";
 const Product = ({ product }) => {
   return (
     <Card className="my-2" style={{ textColor: "white" }}>
-      <Link to={`product/${product._id}`}>
+      <Link to={`/product/${product._id}`}>
         <Card.Img src={product.image} />
       </Link>
       <Card.Body>

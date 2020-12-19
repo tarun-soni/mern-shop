@@ -42,14 +42,10 @@ const ProductScreen = ({ history, match }) => {
       setRating(0);
       setComment("");
     }
-    dispatch(listProductDetails(match.params.id));
 
-    console.log("product._id outside :>> ", product._id);
-    console.log("match.params.id outside:>> ", match.params.id);
-    dispatch({ type: PRODUCT_CREATE_REVIEW_RESET });
     if (!product._id || product._id !== match.params.id) {
-      console.log("product._id inside :>> ", product._id);
-      console.log("match.params.id inside:>> ", match.params.id);
+      dispatch(listProductDetails(match.params.id));
+      dispatch({ type: PRODUCT_CREATE_REVIEW_RESET });
     }
   }, [dispatch, match, successProductReview, product._id]);
 
