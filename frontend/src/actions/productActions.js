@@ -21,6 +21,7 @@ import {
   PRODUCT_TOP_SUCCESS,
   PRODUCT_TOP_FAIL,
   PRODUCT_TOP_REQUEST,
+  PRODUCT_DETAILS_CLEAR_REDUX_STORE,
 } from "../constants/productConstants";
 import { logout } from "./userActions";
 
@@ -50,6 +51,7 @@ export const listProducts = (keyword = "", pageNumber = "") => async (
 
 export const listProductDetails = (id) => async (dispatch) => {
   try {
+    dispatch({ type: PRODUCT_DETAILS_CLEAR_REDUX_STORE });
     dispatch({ type: PRODUCT_DETAILS_REQUEST });
 
     const { data } = await axios.get(`/api/products/${id}`);

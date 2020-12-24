@@ -23,6 +23,7 @@ import {
   PRODUCT_TOP_REQUEST,
   PRODUCT_TOP_SUCCESS,
   PRODUCT_TOP_FAIL,
+  PRODUCT_DETAILS_CLEAR_REDUX_STORE,
 } from "../constants/productConstants";
 
 export const productListReducer = (state = { products: [] }, action) => {
@@ -70,6 +71,10 @@ export const productDetailsReducer = (
       return {
         loading: false,
         error: action.payload,
+      };
+    case PRODUCT_DETAILS_CLEAR_REDUX_STORE:
+      return {
+        product: { reviews: [] },
       };
     default:
       return state;
