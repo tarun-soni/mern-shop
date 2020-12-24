@@ -76,7 +76,7 @@ const initialState = {
   },
 
   userLogin: {
-    userLogin: userInfoFromStorage,
+    userInfo: userInfoFromStorage,
   },
 };
 
